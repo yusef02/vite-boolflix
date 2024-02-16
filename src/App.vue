@@ -1,7 +1,8 @@
 <script>
+import axios from "axios";
 import { store } from "./store";
 import AppHeader from "./components/AppHeader.vue";
-import axios from "axios";
+import AppMain from "./components/AppMain.vue";
 
 export default {
   data() {
@@ -11,7 +12,7 @@ export default {
     };
   },
   computed: {},
-  components: { AppHeader },
+  components: { AppHeader, AppMain },
   methods: {
     searchedMovieTitle(value) {
       console.log(this.movieTitle);
@@ -25,6 +26,12 @@ export default {
         })
         .then((res) => {
           console.log(res.data.results);
+          store.movies = res.data.results.map((result) => {
+            const { title, original_title, original_language, vote_average } =
+              result;
+            return { title, original_title, original_language, vote_average };
+          });
+          console.log(store.movies);
         });
     },
   },
@@ -33,6 +40,7 @@ export default {
 
 <template>
   <app-header @search="searchedMovieTitle" />
+  <app-main />
 </template>
 
 <style lang="scss">
