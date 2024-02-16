@@ -1,5 +1,40 @@
-<script></script>
+<script>
+import { store } from "./store";
+import AppHeader from "./components/AppHeader.vue";
+import axios from "axios";
 
-<template></template>
+export default {
+  data() {
+    return {
+      store,
+      movieTitle: "",
+    };
+  },
+  computed: {},
+  components: { AppHeader },
+  methods: {
+    searchedMovieTitle(value) {
+      console.log(this.movieTitle);
+      this.movieTitle = value;
+      axios
+        .get(`${store.api.uri}/search/movie?`, {
+          params: {
+            api_key: store.api.key,
+            query: this.movieTitle,
+          },
+        })
+        .then((res) => {
+          console.log(res.data.results);
+        });
+    },
+  },
+};
+</script>
 
-<style></style>
+<template>
+  <app-header @search="searchedMovieTitle" />
+</template>
+
+<style lang="scss">
+@use "./assets/style/general.scss" as *;
+</style>
