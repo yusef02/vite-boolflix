@@ -1,6 +1,6 @@
 <script>
 import { store } from "../store";
-import MovieCard from "./MovieCard.vue";
+import SeriesCard from "./SeriesCard.vue";
 
 export default {
   data() {
@@ -8,7 +8,8 @@ export default {
       store,
     };
   },
-  components: { MovieCard },
+  components: { SeriesCard },
+  methods: {},
 };
 </script>
 
@@ -16,12 +17,19 @@ export default {
   <main>
     <div class="container">
       <div class="row">
-        <movie-card
-          v-for="movie in store.movies"
-          :title="movie.title"
-          :originalTitle="movie.original_title"
-          :originalLanguage="movie.original_language"
-          :voteAverage="movie.vote_average"
+        <series-card
+          v-for="item in store.movies"
+          :title="item.title"
+          :originalTitle="item.original_title"
+          :originalLanguage="item.original_language"
+          :voteAverage="item.vote_average"
+        />
+        <series-card
+          v-for="item in store.seriesTv"
+          :title="item.title"
+          :originalTitle="item.original_title"
+          :originalLanguage="item.original_language"
+          :voteAverage="item.vote_average"
         />
       </div>
     </div>

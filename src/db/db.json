@@ -1,0 +1,8 @@
+[
+  {
+    "languages": [
+      { "code": "en", "flagSrc": "en.jpg" },
+      { "code": "it", "flagSrc": "it.jpg" }
+    ]
+  }
+]
