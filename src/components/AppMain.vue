@@ -25,10 +25,12 @@ export default {
     },
 
     getPosterImage(imgSrc) {
-      return new URL(
-        `${store.apiTmdb.uriImages}w500/${imgSrc}`,
-        import.meta.url
-      ).href;
+      if (imgSrc) {
+        return new URL(
+          `${store.apiTmdb.uriImages}w500/${imgSrc}`,
+          import.meta.url
+        ).href;
+      } else return new URL(`/reelFilmIcon.jpg`, import.meta.url).href;
     },
   },
 };

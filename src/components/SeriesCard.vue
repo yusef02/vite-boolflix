@@ -1,6 +1,7 @@
 <script>
 import axios from "axios";
 import { store } from "../store";
+import StarReview from "./StarReview.vue";
 
 export default {
   data() {
@@ -13,19 +14,8 @@ export default {
     "voteAverage",
     "posterImage",
   ],
-  methods: {
-    // TODO: implement dinamic lang flag getted from db by axios request
-    // getFlag(langCode) {
-    //   if (langCode === "en")
-    //     return new URL(`/lang-flags/en.jpg`, import.meta.url).href;
-    //   //   axios.get(`${store.uriServer}`).then((res) => {
-    //   //     for (let lang of res.data.languages) {
-    //   //       if (langCode === lang.code)
-    //   //         return new URL(`/lang-flags/${lang.flagSrc}`, import.meta.url).href;
-    //   //     }
-    //   //   });
-    // },
-  },
+  components: { StarReview },
+  methods: {},
 };
 </script>
 
@@ -40,6 +30,7 @@ export default {
         <p>{{ originalTitle }}</p>
         <img :src="originalLanguage" />
         <p>{{ voteAverage }}</p>
+        <star-review :voteAverage="voteAverage" />
       </div>
     </div>
   </div>

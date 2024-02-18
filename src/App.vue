@@ -26,10 +26,10 @@ export default {
             },
           })
           .then((res) => {
-            console.log(res.data.results);
+            // console.log(res.data.results);
             if (searchType === "movie") {
               store.searchResults.push(
-                ...res.data.results.flat((result) => {
+                ...res.data.results.map((result) => {
                   const {
                     title,
                     original_title,
@@ -46,11 +46,11 @@ export default {
                   };
                 })
               );
-              console.log(store.searchResults);
+              // console.log(store.searchResults);
             }
             if (searchType === "tv") {
               store.searchResults.push(
-                ...res.data.results.flat((result) => {
+                ...res.data.results.map((result) => {
                   const {
                     name,
                     original_name,
@@ -67,11 +67,11 @@ export default {
                   };
                 })
               );
-              console.log(store.searchResults);
+              // console.log(store.searchResults);
             }
           });
       }
-      console.log(store.searchResults);
+      // console.log(store.searchResults);
     },
   },
 };
