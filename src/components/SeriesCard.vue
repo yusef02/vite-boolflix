@@ -13,6 +13,7 @@ export default {
     "originalLanguage",
     "voteAverage",
     "posterImage",
+    "backDrop",
   ],
   components: { StarReview },
   methods: {},
@@ -26,32 +27,58 @@ export default {
         <img :src="posterImage" alt="image series" />
       </div>
       <div class="series__desc col-8">
-        <p>{{ title }}</p>
-        <p>{{ originalTitle }}</p>
-        <img :src="originalLanguage" />
-        <p>{{ voteAverage }}</p>
-        <star-review :voteAverage="voteAverage" />
+        <div>
+          <p><span>Title: </span> {{ title }}</p>
+          <p><span>Original title: </span> {{ originalTitle }}</p>
+        </div>
+        <div>
+          <p><span>Original language: </span></p>
+          <img :src="originalLanguage" />
+        </div>
+        <div>
+          <p><span>Vote: </span> {{ voteAverage }}</p>
+          <star-review :voteAverage="voteAverage" />
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <style lang="scss">
-.series {
-  overflow: hidden;
-  &__poster {
-    object-fit: cover;
-    object-position: center;
+.col-md-8 {
+  background-color: transparent;
+  .series {
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+    font-size: 20;
+    font-weight: 600;
     overflow: hidden;
-    img {
-      width: 100%;
-      height: 100%;
+    &__poster {
+      object-fit: cover;
+      object-position: center;
+      overflow: hidden;
+      img {
+        width: 100%;
+        height: 100%;
+      }
     }
-  }
-  &__desc {
-    img {
-      width: 100px;
-      height: 60px;
+    &__desc {
+      background-color: transparent;
+      padding: 30px;
+      line-height: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      p {
+        span {
+          color: rebeccapurple;
+        }
+      }
+      img {
+        width: 30px;
+        height: 20px;
+        border-radius: 8px;
+      }
     }
   }
 }

@@ -26,7 +26,7 @@ export default {
             },
           })
           .then((res) => {
-            // console.log(res.data.results);
+            console.log(res.data.results);
             if (searchType === "movie") {
               store.searchResults.push(
                 ...res.data.results.map((result) => {
@@ -36,6 +36,7 @@ export default {
                     original_language,
                     vote_average,
                     poster_path,
+                    backdrop_path,
                   } = result;
                   return {
                     title,
@@ -43,6 +44,7 @@ export default {
                     original_language,
                     vote_average,
                     poster_path,
+                    backdrop_path,
                   };
                 })
               );
@@ -57,6 +59,7 @@ export default {
                     original_language,
                     vote_average,
                     poster_path,
+                    backdrop_path,
                   } = result;
                   return {
                     title: name,
@@ -64,6 +67,7 @@ export default {
                     original_language,
                     vote_average,
                     poster_path,
+                    backdrop_path,
                   };
                 })
               );

@@ -27,10 +27,18 @@ export default {
     getPosterImage(imgSrc) {
       if (imgSrc) {
         return new URL(
-          `${store.apiTmdb.uriImages}w500/${imgSrc}`,
+          `${store.apiTmdb.uriImages}w500${imgSrc}`,
           import.meta.url
         ).href;
       } else return new URL(`/reelFilmIcon.jpg`, import.meta.url).href;
+    },
+    getBackImage(imgSrc) {
+      if (imgSrc) {
+        return new URL(
+          `${store.apiTmdb.uriImages}w500${imgSrc}`,
+          import.meta.url
+        ).href;
+      }
     },
   },
 };
@@ -47,10 +55,16 @@ export default {
           :originalLanguage="getFlag(item.original_language)"
           :voteAverage="item.vote_average"
           :posterImage="getPosterImage(item.poster_path)"
+          :backDrop="getBackImage(item.backdrop_path)"
         />
       </div>
     </div>
   </main>
 </template>
 
-<style lang="scss"></style>
+<style lang="scss">
+main {
+  background-color: rgb(40, 40, 40);
+  padding: 50px 0;
+}
+</style>
